@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorization - Deal Video Assistant</title>
+<meta name="description" content="Deal Video Assistant: a personal tool that prepares short product videos and uploads them as drafts to the owner's own TikTok account.">
+<style>
+:root{--bg:#ffffff;--fg:#1c1c28;--muted:#5b5b70;--card:#f4f4f8;--accent:#1f6feb;--line:#dcdce6}
+@media (prefers-color-scheme: dark){:root{--bg:#14141c;--fg:#ececf4;--muted:#a3a3b8;--card:#1e1e2a;--accent:#7db1ff;--line:#33334a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:760px;margin:0 auto;padding:48px 20px 24px}
+h1{font-size:2rem;line-height:1.2;margin:0 0 8px}
+h2{font-size:1.25rem;margin:32px 0 8px}
+p,li{color:var(--fg)}
+.muted{color:var(--muted)}
+a{color:var(--accent)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:20px 0}
+footer{max-width:760px;margin:0 auto;padding:16px 20px 48px;border-top:1px solid var(--line);color:var(--muted);font-size:.95rem}
+footer a{margin-right:16px}
+code{background:var(--card);padding:2px 6px;border-radius:6px;word-break:break-all}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Authorization received</h1>
+<p>You can close this page after copying the code below into the terminal where <code>tiktok_auth.py</code> is running. You can also paste this page's full address instead.</p>
+<div class="card"><p>Authorization code:</p><p><code id="code">(no code found in the address)</code></p></div>
+<p class="muted" id="err"></p>
+
+</main>
+<footer>
+<a href="terms.html">Terms of Service</a>
+<a href="privacy.html">Privacy Policy</a>
+<a href="index.html">Home</a>
+<div>&copy; 2026 YOUR_NAME. Contact: <a href="mailto:YOUR_EMAIL">YOUR_EMAIL</a></div>
+</footer>
+<script>
+(function(){
+  try{
+    var p = new URLSearchParams(window.location.search);
+    var c = p.get("code");
+    if(c){ document.getElementById("code").textContent = c; }
+    var e = p.get("error_description") || p.get("error");
+    if(e){ document.getElementById("err").textContent = "Error: " + e; }
+  }catch(x){}
+})();
+</script>
+</body>
+</html>
